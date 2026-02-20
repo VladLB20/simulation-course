@@ -62,9 +62,7 @@ namespace FallingSim
             CreateControls();
 
                     
-            m = (double)Num_m.Value; 
-            S = (double)Num_S.Value; 
-            k = 0.5 * C * rho * S / m;
+            
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1; 
@@ -192,12 +190,12 @@ namespace FallingSim
             result_table = new DataGridView
             {
                 Location = new Point(550,10),
-                Size = new Size(300, 200),
+                Size = new Size(350, 200),
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                ColumnCount = 5
+                ColumnCount = 6
             };
             
             result_table.Columns[0].Name = "dt, с";
@@ -227,20 +225,21 @@ namespace FallingSim
             this.Controls.Add(result_table);
         }
 
-        readonly double S;          
-        readonly double m;  
+        
         
         const double g = 9.81;
         const double C = 0.15;
         const double rho = 1.29;
-        readonly double k; 
 
 
 
         private void BtnClick_Click(object sender, EventArgs e)
         {
             if (!timer.Enabled)
-            {
+            {   
+                double m = (double)Num_m.Value; 
+                double S = (double)Num_S.Value; 
+                double k = 0.5 * C * rho * S / m;
                 double h0 = (double)NumHeight.Value;
                 double angle = (double)NumAngle.Value;
                 double v0 = (double)NumSpeed.Value;
@@ -311,6 +310,9 @@ namespace FallingSim
                     sim.Prev_Vx = sim.X;
                     sim.PrevTime =sim.Time;
 
+                    double m = (double)Num_m.Value; 
+                    double S = (double)Num_S.Value; 
+                    double k = 0.5 * C * rho * S / m;
                     double v = Math.Sqrt(sim.Vx * sim.Vx + sim.Vy * sim.Vy);
                     double ax = -k * v * sim.Vx;
                     double ay = -g - k * v * sim.Vy;
