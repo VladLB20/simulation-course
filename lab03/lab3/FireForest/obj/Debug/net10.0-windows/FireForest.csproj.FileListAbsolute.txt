@@ -1,0 +1,14 @@
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.AssemblyInfo.cs
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\bin\Debug\net10.0-windows\FireForest.exe
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\bin\Debug\net10.0-windows\FireForest.deps.json
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\bin\Debug\net10.0-windows\FireForest.runtimeconfig.json
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\bin\Debug\net10.0-windows\FireForest.dll
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\bin\Debug\net10.0-windows\FireForest.pdb
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.dll
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\refint\FireForest.dll
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.pdb
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\FireForest.genruntimeconfig.cache
+C:\Users\user\Desktop\ТГУ\3 курс\имитационное моделирование\lab3\FireForest\obj\Debug\net10.0-windows\ref\FireForest.dll
