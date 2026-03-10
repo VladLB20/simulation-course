@@ -12,7 +12,7 @@ namespace FireForest
         private const int Cols = 100;
         private const int CellSize = 6;
 
-        // Вероятности типов растительности при инициализации
+        
         private const double ProbEmpty = 0.4;
         private const double ProbGrass = 0.3;
         private const double ProbShrub = 0.2;
@@ -39,7 +39,7 @@ namespace FireForest
         private int[,] forest = new int[Rows, Cols];
         private Random rand = new Random();
 
-        // UI элементы
+        
         private PictureBox pictureBox;
         private Button btnStart, btnPause, btnReset;
         private System.Windows.Forms.Timer timer;
@@ -51,17 +51,17 @@ namespace FireForest
         private bool waterPlacementMode = false;
         private int waterSize = 5;
 
-        // Элементы для облака (плавное движение)
+        
         private NumericUpDown nudCloudSize;
         private Button btnStartCloud;
         private bool cloudActive = false;
-        private double cloudRow = 0;       // дробные координаты левого верхнего угла облака
+        private double cloudRow = 0;      
         private double cloudCol = 0;
         private int cloudSize = 5;
         private Random randCloud = new Random();
-        private const double CloudStep = 0.3; // шаг перемещения за тик (меньше 1 для плавности)
+        private const double CloudStep = 0.3; 
 
-        // Элемент для регенерации
+       
         private NumericUpDown nudRegrowthProb;
 
         public Form1()
@@ -89,7 +89,7 @@ namespace FireForest
             pictureBox.MouseClick += PictureBox_MouseClick;
             this.Controls.Add(pictureBox);
 
-            // Кнопки управления
+            
             btnStart = new Button { Text = "Старт", Location = new Point(10, pictureBox.Bottom + 10), Size = new Size(75, 30) };
             btnStart.Click += BtnStart_Click;
             this.Controls.Add(btnStart);
@@ -102,7 +102,7 @@ namespace FireForest
             btnReset.Click += BtnReset_Click;
             this.Controls.Add(btnReset);
 
-            // Панель для воды
+            
             Label lblWaterSize = new Label { Text = "Размер водоёма:", Location = new Point(10, pictureBox.Bottom + 50), Size = new Size(100, 20) };
             this.Controls.Add(lblWaterSize);
 
@@ -113,7 +113,7 @@ namespace FireForest
             btnAddWater.Click += BtnAddWater_Click;
             this.Controls.Add(btnAddWater);
 
-            // Панель для облака
+            
             Label lblCloudSize = new Label { Text = "Размер облака:", Location = new Point(10, pictureBox.Bottom + 90), Size = new Size(100, 20) };
             this.Controls.Add(lblCloudSize);
 
@@ -124,7 +124,7 @@ namespace FireForest
             btnStartCloud.Click += BtnStartCloud_Click;
             this.Controls.Add(btnStartCloud);
 
-            // Панель для регенерации
+            
             Label lblRegrowth = new Label { Text = "Вероятность регенерации (%):", Location = new Point(10, pictureBox.Bottom + 130), Size = new Size(140, 20) };
             this.Controls.Add(lblRegrowth);
 
@@ -139,7 +139,7 @@ namespace FireForest
         {
             Graphics g = e.Graphics;
 
-            // Рисуем клетки
+            
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
@@ -163,7 +163,7 @@ namespace FireForest
                 }
             }
 
-            // Рисуем облако (полупрозрачный белый прямоугольник)
+            
             if (cloudActive)
             {
                 int x = (int)(cloudCol * CellSize);
@@ -233,7 +233,6 @@ namespace FireForest
         private void StartCloud()
         {
             cloudSize = (int)nudCloudSize.Value;
-            // Ограничиваем, чтобы облако полностью помещалось в поле
             double maxRow = Rows - cloudSize;
             double maxCol = Cols - cloudSize;
             if (maxRow >= 0 && maxCol >= 0)
@@ -267,7 +266,7 @@ namespace FireForest
             pictureBox.Invalidate();
         }
 
-        // Применение эффекта облака: тушим все клетки, пересекающиеся с облаком
+        
         private void ApplyCloudEffect()
         {
             if (!cloudActive) return;
@@ -288,25 +287,25 @@ namespace FireForest
             {
                 for (int j = startCol; j <= endCol; j++)
                 {
-                    // Границы клетки в пикселях
+                    
                     double cellLeft = j * CellSize;
                     double cellTop = i * CellSize;
                     double cellRight = (j + 1) * CellSize;
                     double cellBottom = (i + 1) * CellSize;
 
-                    // Проверка пересечения прямоугольников
+                    
                     if (cloudLeft < cellRight && cloudRight > cellLeft &&
                         cloudTop < cellBottom && cloudBottom > cellTop)
                     {
                         int state = forest[i, j];
                         if (state >= FIRE_GRASS && state <= FIRE_TREE)
-                            forest[i, j] = EMPTY; // тушим
+                            forest[i, j] = EMPTY; 
                     }
                 }
             }
         }
 
-        // Плавное случайное движение облака
+        
         private void MoveCloudSmooth()
         {
             if (!cloudActive) return;
@@ -316,7 +315,7 @@ namespace FireForest
             double minCol = 0;
             double maxCol = Cols - cloudSize;
 
-            // Пытаемся двигаться в одном из четырёх направлений
+            
             var directions = new (double dr, double dc)[] { (-CloudStep, 0), (CloudStep, 0), (0, -CloudStep), (0, CloudStep) };
             directions = directions.OrderBy(x => randCloud.NextDouble()).ToArray();
 
@@ -334,7 +333,7 @@ namespace FireForest
             }
         }
 
-        // Распространение огня (без изменений)
+        
         private void UpdateForest()
         {
             int[,] newForest = (int[,])forest.Clone();
@@ -381,7 +380,7 @@ namespace FireForest
             forest = newForest;
         }
 
-        // Регенерация растительности
+        
         private void RegrowForest()
         {
             double regrowthProb = (double)nudRegrowthProb.Value / 100.0;
@@ -439,17 +438,17 @@ namespace FireForest
         {
             if (!isRunning) return;
 
-            // 1. Облако тушит
+            
             if (cloudActive)
                 ApplyCloudEffect();
 
-            // 2. Огонь распространяется
+            
             UpdateForest();
 
-            // 3. Регенерация
+            
             RegrowForest();
 
-            // 4. Облако движется плавно
+            
             if (cloudActive)
                 MoveCloudSmooth();
 
@@ -475,4 +474,5 @@ namespace FireForest
             ResetForest();
         }
     }
+
 }
