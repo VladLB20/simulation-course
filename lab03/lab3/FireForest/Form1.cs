@@ -45,7 +45,6 @@ namespace FireForest
         private System.Windows.Forms.Timer timer;
         private bool isRunning = false;
 
-        // Элементы для воды
         private NumericUpDown nudWaterSize;
         private Button btnAddWater;
         private bool waterPlacementMode = false;
@@ -271,13 +270,11 @@ namespace FireForest
         {
             if (!cloudActive) return;
 
-            // Границы облака в пикселях
             double cloudLeft = cloudCol * CellSize;
             double cloudTop = cloudRow * CellSize;
             double cloudRight = (cloudCol + cloudSize) * CellSize;
             double cloudBottom = (cloudRow + cloudSize) * CellSize;
 
-            // Проходим по всем клеткам, которые потенциально могут пересекаться
             int startRow = Math.Max(0, (int)cloudRow);
             int endRow = Math.Min(Rows - 1, (int)Math.Ceiling(cloudRow + cloudSize));
             int startCol = Math.Max(0, (int)cloudCol);
@@ -476,3 +473,4 @@ namespace FireForest
     }
 
 }
+
