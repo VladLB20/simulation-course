@@ -75,7 +75,7 @@ $$ X_n = (X_{n-k} + X_{n-l}) \pmod m $$
 $$ \alpha_n = \frac{X_n}{m} $$
 
 ## 4. Результат
- ![result](resultwork.png)
+ ![result](result.png)
 
 
 
