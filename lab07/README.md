@@ -22,4 +22,3 @@
 
 ---
 ![моделлирование](markov.png)
-<img width="1280" height="913" alt="image" src="https://github.com/user-attachments/assets/a5abefab-646f-48d6-8f8f-3506bb3acfa1" />
